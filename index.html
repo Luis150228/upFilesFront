@@ -4,15 +4,22 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles.css">
     <title>Lectura de Archivos</title>
 </head>
 <body>
     <h3>Gestion de Archivos</h3>
-    <h2>Seleccionar Archivo para mapeo</h2>
-    <input type="file" id="factura">
-    <h4>Resultados</h4>
     <div>
-        <p id="conenido-archivo"></p>
+        <h2>Seleccionar Archivo de factura</h2>
+        <input type="file" id="factura">
+        <h4>Respuesta</h4>
+        <div id="respuesta-factura"></div>
+    </div>
+    <div>
+        <h2>Seleccionar Archivo de Padron</h2>
+        <input type="file" id="padron">
+        <h4>Respuesta</h4>
+        <div id="respuesta-padron"></div>
     </div>
 
     <script src="./envio.js" ></script>

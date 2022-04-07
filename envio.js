@@ -1,5 +1,5 @@
 const factura = document.querySelector('#factura');
-const respuestas = document.querySelector('#conenido-archivo');
+const resFactura = document.querySelector('#respuesta-factura');
 const api_url = 'http://localhost/jsfilestext_api/';
 
 function enviar(arreglo) {
@@ -20,14 +20,14 @@ function enviar(arreglo) {
             tpl = data[0].map(respuesta=>`
           <h2 class="terminado-msg">${respuesta.code_msg}</h2>
           <div class="emojis-msg">
-            <img src="./assets/img/emojis/guardado.png" alt="Gracias">
+            <img src="./assets/img/FX005_1.png" alt="Gracias">
           </div>
           `);
         } else {
             tpl = data[0].map(respuesta=>`
           <h2 class="terminado-msg">${respuesta.code_msg}</h2>
           <div class="emojis-msg">
-            <img src="./assets/img/emojis/no_guardado.png" alt="No Guardado">
+            <img src="./assets/img/FX001_1.png" alt="No Guardado">
           </div>
           <div>
             <button class="btn-enviar anime" type="button"><span>Reintentar</span></button>
@@ -36,7 +36,7 @@ function enviar(arreglo) {
         }
 
           
-        respuestas.innerHTML = tpl;
+        resFactura.innerHTML = tpl;
         factura.value = '';
     })
     .catch(function(err){
