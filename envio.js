@@ -1,5 +1,5 @@
 const factura = document.querySelector('#factura');
-const preTxt = document.querySelector('#conenido-archivo');
+const respuestas = document.querySelector('#conenido-archivo');
 const api_url = 'http://localhost/jsfilestext_api/';
 
 function enviar(arreglo) {
@@ -14,6 +14,30 @@ function enviar(arreglo) {
     .then((response)=>response.json())
     .then(data => {
         console.log(data[0][0]['code']);
+        let tpl = ''
+
+        if (data[0][0]['code'] == '200') {
+            tpl = data[0].map(respuesta=>`
+          <h2 class="terminado-msg">${respuesta.code_msg}</h2>
+          <div class="emojis-msg">
+            <img src="./assets/img/emojis/guardado.png" alt="Gracias">
+          </div>
+          `);
+        } else {
+            tpl = data[0].map(respuesta=>`
+          <h2 class="terminado-msg">${respuesta.code_msg}</h2>
+          <div class="emojis-msg">
+            <img src="./assets/img/emojis/no_guardado.png" alt="No Guardado">
+          </div>
+          <div>
+            <button class="btn-enviar anime" type="button"><span>Reintentar</span></button>
+          </div>
+          `);
+        }
+
+          
+        respuestas.innerHTML = tpl;
+        factura.value = '';
     })
     .catch(function(err){
         console.log(err);
