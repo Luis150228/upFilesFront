@@ -6,14 +6,14 @@ function enviar(arreglo) {
     let datos = JSON.stringify(arreglo);
     fetch(`${api_url}rutes/factura.php`,{
         method : 'POST',
-        body : datos,
         headers : {
             "Content-type": "application/json;"
-        }
+        },
+        body : datos
     })
     .then((response)=>response.json())
     .then(data => {
-        console.log(data[0]['code']);
+        console.log(data[0][0]['code']);
     })
     .catch(function(err){
         console.log(err);
