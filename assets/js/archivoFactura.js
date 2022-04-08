@@ -1,8 +1,6 @@
-const factura = document.querySelector('#factura');
-const resFactura = document.querySelector('#respuesta-factura');
 const api_url = 'http://localhost/jsfilestext_api/';
 
-function enviar(arreglo) {
+const enviar = (arreglo, inputData, divResp)=> {
     let datos = JSON.stringify(arreglo);
     fetch(`${api_url}rutes/factura.php`,{
         method : 'POST',
@@ -13,7 +11,7 @@ function enviar(arreglo) {
     })
     .then((response)=>response.json())
     .then(data => {
-        console.log(data[0][0]['code']);
+        // console.log(data[0][0]['code']);
         let tpl = ''
 
         if (data[0][0]['code'] == '200') {
@@ -29,24 +27,20 @@ function enviar(arreglo) {
           <div class="emojis-msg">
             <img src="./assets/img/FX001_1.png" alt="No Guardado">
           </div>
-          <div>
-            <button class="btn-enviar anime" type="button"><span>Reintentar</span></button>
-          </div>
           `);
         }
 
           
-        resFactura.innerHTML = tpl;
-        factura.value = '';
+        divResp.innerHTML = tpl;
+        divResp.style.display = 'block';
+        inputData.value = '';
     })
     .catch(function(err){
         console.log(err);
     })
 }
 
-
-
-function leerArchivo(e) {
+export const archivoFactura = (e, inputdata, divres)=> {
     let archivo = e.target.files[0];
     if (!archivo) {
         return;
@@ -81,14 +75,8 @@ function leerArchivo(e) {
         arreglo = arreglo.filter(function(dato){
             return dato != undefined
           });
-          enviar(arreglo);
+          enviar(arreglo, inputdata, divres);
           //   console.log(arreglo);
     };
     lector.readAsText(archivo);
 }
-
-
-
-factura.addEventListener('change', (e)=>{
-    leerArchivo(e);
-})
