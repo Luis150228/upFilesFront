@@ -1,6 +1,7 @@
 const api_url = 'http://localhost/jsfilestext_api/';
 
 const enviar = (arreglo, inputData, divResp)=> {
+    
     let datos = JSON.stringify(arreglo);
     fetch(`${api_url}rutes/padron.php`,{
         method : 'POST',

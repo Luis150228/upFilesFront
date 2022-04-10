@@ -1,7 +1,6 @@
 import { archivoFactura } from "./archivoFactura.js";
 import { archivoPadron } from "./archivoPadron.js";
 import { impPDF } from "./fpdfprinter.js";
-import { imprimirPDF } from "./printPdf.js";
 
 const factura = document.querySelector('#factura');
 const resFactura = document.querySelector('#respuesta-factura');
@@ -17,9 +16,18 @@ imprimir.addEventListener('click', (e)=>{
     let ubicacion = colonia.value;
     let cant_inicio = m_inicio.value;
     let cant_fin = m_fin.value;
-
-    let $info = impPDF(ubicacion, cant_inicio, cant_fin);
+    impPDF(ubicacion, cant_inicio, cant_fin);
     // imprimirPDF($info);
+})
+
+
+padron.addEventListener('click', (e)=>{
+    resPadron.style.display = 'none';
+    
+})
+
+padron.addEventListener('change', (e)=>{
+    archivoPadron(e, padron, resPadron)
 })
 
 factura.addEventListener('click', (e)=>{
@@ -27,15 +35,7 @@ factura.addEventListener('click', (e)=>{
     
 })
 
-padron.addEventListener('click', (e)=>{
-    resPadron.style.display = 'none';
-    
-})
-
 factura.addEventListener('change', (e)=>{
     archivoFactura(e, factura, resFactura);
 })
 
-padron.addEventListener('change', (e)=>{
-    archivoPadron(e, padron, resPadron)
-})

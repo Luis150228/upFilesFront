@@ -11,7 +11,7 @@ export const enviar = (arreglo, inputData, divResp)=> {
     })
     .then((response)=>response.json())
     .then(data => {
-        console.log(data[0][0]['code']);
+        // console.log(data[0][0]['code']);
         let tpl = ''
 
         if (data[0][0]['code'] == '200') {
