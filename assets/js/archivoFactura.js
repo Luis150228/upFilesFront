@@ -1,6 +1,6 @@
 const api_url = 'http://localhost/jsfilestext_api/';
 
-const enviar = (arreglo, inputData, divResp)=> {
+export const enviar = (arreglo, inputData, divResp)=> {
     let datos = JSON.stringify(arreglo);
     fetch(`${api_url}rutes/factura.php`,{
         method : 'POST',
@@ -11,7 +11,7 @@ const enviar = (arreglo, inputData, divResp)=> {
     })
     .then((response)=>response.json())
     .then(data => {
-        // console.log(data[0][0]['code']);
+        console.log(data[0][0]['code']);
         let tpl = ''
 
         if (data[0][0]['code'] == '200') {
