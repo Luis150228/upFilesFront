@@ -1,4 +1,4 @@
-const api_url = 'http://apicatovatech.xyz/';
+const api_url = 'http://localhost/jsfilestext_api/';
 
 const enviar = (arreglo, inputData, divResp)=> {
     

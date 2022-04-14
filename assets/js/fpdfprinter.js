@@ -1,5 +1,5 @@
 
-const api_url = 'http://apicatovatech.xyz/';
+const api_url = 'http://localhost/jsfilestext_api/';
 import escudo from '../img/escudo.json'assert { type: "json" };
 
 export const impPDF = (ubica, cantA, cantB)=>{
@@ -39,6 +39,8 @@ export const impPDF = (ubica, cantA, cantB)=>{
                 // console.log(element['cta']);
                 // const deuda = new Intl.NumberFormat('es-MX').format(element['totaldeuda']);
                 doc.addImage(escudo.src, 'png', 140, 10, 60, 20);
+                doc.addImage(escudo.src, escudo.formato, 90, 270, 30, 10);
+                // doc.addImage(escudo.src, 'png', posicion a los lados, posicion Arriba o abajo, ancho, alto);
                 doc.setFont("Verdana");
                 doc.setFontSize(12);
                 doc.text(10, 40, `Cta Predial: ${element['cta']}`);
