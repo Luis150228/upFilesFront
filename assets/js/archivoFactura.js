@@ -1,4 +1,4 @@
-const api_url = 'http://localhost/jsfilestext_api/';
+const api_url = 'http://apicatovatech.xyz/';
 
 export const enviar = (arreglo, inputData, divResp)=> {
     let datos = JSON.stringify(arreglo);
